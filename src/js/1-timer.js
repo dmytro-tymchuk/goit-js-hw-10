@@ -10,6 +10,9 @@ const hoursHTML = document.querySelector(`.value[data-hours]`);
 const minutesHTML = document.querySelector(`.value[data-minutes]`);
 const secondsHTML = document.querySelector(`.value[data-seconds]`);
 let userSelectedDate = null;
+let timerId = null;
+let isActive = false;
+
 
 button.disabled = true;
 const options = {
@@ -22,8 +25,7 @@ const options = {
       const currentDate = new Date();
       if (selectedDate <= currentDate) {
           iziToast.show({
-            title: 'Error',
-              message: 'Illegal operation',
+              message: 'Please choose a date in the future',
               position: 'topRight',
               messageColor: '#fff',
               titleColor: '#fff',
@@ -44,7 +46,6 @@ flatpickr(calendar, options);
 button.addEventListener("click", handleClick);
 
 
-let isActive = false
 function handleClick() {
     if (isActive) {
         return
@@ -54,7 +55,7 @@ function handleClick() {
         button.disabled = true;
         calendar.disabled = true;
     }
-    setInterval(() => {
+    timerId = setInterval(() => {
         const currentTime = Date.now();
         const chosenTime = userSelectedDate.getTime();
         const deltaTime = chosenTime - currentTime;
@@ -64,7 +65,10 @@ function handleClick() {
             daysHTML.textContent = "00";
             hoursHTML.textContent = "00";
             minutesHTML.textContent = "00";
-            secondsHTML.textContent = "00";
+             secondsHTML.textContent = "00";
+             
+             calendar.disabled = false;
+             isActive = false;
             return;
         }
         const {days, hours, minutes, seconds} = convertMs(deltaTime);

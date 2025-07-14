@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 .calendar {
   width: 272px;
   height: 40px;
@@ -47,6 +48,7 @@
   align-items: center;
   gap: 8px;
   justify-content: center;
+  flex-direction: row;
 }
 
 .timer {
