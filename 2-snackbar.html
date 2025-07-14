@@ -7,13 +7,39 @@
     <title>Page 3</title>
     <script type="module" crossorigin src="/goit-js-hw-10/2-snackbar.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/modulepreload-polyfill-B5Qt9EMX.js">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/styles-kqN67tq_.css">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/vendor-BbbuE1sJ.js">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/vendor-CZjNVMTf.css">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/styles-D2M9rnqP.css">
   </head>
   <body>
     <main>
       <div class="container">
         <a class="back-link" href="./index.html">Go back</a>
         <h1 class="main-title">Snackbar</h1>
+        <form class="form">
+          <div class="wrap">
+            <label class="label">
+              Delay (ms)
+              <input class="ms-input" type="number" name="delay" required />
+            </label>
+          </div>
+
+          <fieldset class="radio-group">
+            <legend class="legend">State</legend>
+            <div class="options">
+              <label class="option">
+                <input type="radio" name="state" value="fulfilled" required />
+                Fulfilled
+              </label>
+              <label class="option">
+                <input type="radio" name="state" value="rejected" required />
+                Rejected
+              </label>
+            </div>
+          </fieldset>
+
+          <button class="btn" type="submit">Create notification</button>
+        </form>
       </div>
     </main>
   </body>
